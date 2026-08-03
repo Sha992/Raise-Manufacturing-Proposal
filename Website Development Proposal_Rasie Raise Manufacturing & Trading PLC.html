@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Website Development Proposal: HVAC & Construction</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+
+  :root {
+    --bg-color: #f4f5f7;
+    --surface-color: #ffffff;
+    --text-main: #111111;
+    --text-muted: #666666;
+    --accent-green: #14f85e;
+    --accent-dark: #1a1a1a;
+    --border-color: #e5e7eb;
+    --radius-lg: 24px;
+    --radius-md: 12px;
+    --radius-pill: 9999px;
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    line-height: 1.6;
+    margin: 0;
+    padding: 40px 20px;
+  }
+
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    background-color: var(--surface-color);
+    border-radius: var(--radius-lg);
+    padding: 60px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  }
+
+  .header {
+    margin-bottom: 50px;
+    border-bottom: 2px solid var(--accent-green);
+    padding-bottom: 20px;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin: 0 0 10px 0;
+    letter-spacing: -0.02em;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 40px 0 20px 0;
+    display: inline-block;
+    background-color: var(--accent-dark);
+    color: white;
+    padding: 8px 16px;
+    border-radius: var(--radius-md);
+  }
+
+  h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin: 20px 0 10px 0;
+  }
+
+  p {
+    color: var(--text-muted);
+    font-size: 1.05rem;
+    margin-bottom: 20px;
+  }
+
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+
+  ul li {
+    position: relative;
+    padding-left: 28px;
+    margin-bottom: 12px;
+    color: var(--text-muted);
+  }
+
+  ul li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 8px;
+    width: 10px;
+    height: 10px;
+    background-color: var(--accent-green);
+    border-radius: 50%;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 30px;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+  }
+
+  th, td {
+    padding: 16px;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  th {
+    background-color: var(--accent-dark);
+    color: white;
+    font-weight: 600;
+  }
+
+  tr:last-child td {
+    border-bottom: none;
+  }
+
+  .price-table td:last-child, .price-table th:last-child {
+    text-align: right;
+  }
+
+  .total-row {
+    background-color: var(--bg-color);
+    font-weight: 700;
+    font-size: 1.2rem;
+  }
+
+  .total-row td {
+    color: var(--text-main);
+  }
+
+  .disclaimer {
+    background-color: #fff9e6;
+    border-left: 4px solid #f59e0b;
+    padding: 16px;
+    border-radius: 0 var(--radius-md) var(--radius-md) 0;
+    font-size: 0.95rem;
+    color: #92400e;
+    margin-top: 20px;
+  }
+  
+  .warranty-box {
+    background-color: var(--bg-color);
+    border-left: 4px solid #3b82f6; /* Blue for trust/support */
+    padding: 16px;
+    border-radius: 0 var(--radius-md) var(--radius-md) 0;
+    font-size: 0.95rem;
+    color: var(--text-main);
+    margin-bottom: 30px;
+  }
+
+  .tag {
+    display: inline-block;
+    background-color: var(--accent-green);
+    color: var(--accent-dark);
+    padding: 4px 12px;
+    border-radius: var(--radius-pill);
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-left: 10px;
+    vertical-align: middle;
+  }
+
+  .footer {
+    margin-top: 60px;
+    background-color: var(--bg-color);
+    border-radius: var(--radius-md);
+    padding: 24px 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid var(--border-color);
+  }
+
+  .footer-content {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .footer-name {
+    font-weight: 700;
+    color: var(--text-main);
+    font-size: 1.1rem;
+  }
+
+  .footer-title {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    font-weight: 600;
+  }
+
+  .footer-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--text-main);
+    text-decoration: none;
+    font-weight: 600;
+    background-color: var(--surface-color);
+    padding: 10px 18px;
+    border-radius: var(--radius-pill);
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+  }
+
+  .footer-link:hover {
+    background-color: var(--accent-green);
+    border-color: var(--accent-green);
+    color: var(--accent-dark);
+  }
+  
+  .footer-link svg {
+    transition: transform 0.3s ease;
+  }
+
+  .footer-link:hover svg {
+    transform: translate(2px, -2px);
+  }
+
+  .interactive-row:hover {
+    background-color: #f9fafb;
+    cursor: pointer;
+  }
+
+  .tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted var(--text-main);
+    cursor: help;
+  }
+
+  .tooltip .tooltiptext {
+    visibility: hidden;
+    width: 200px;
+    background-color: var(--accent-dark);
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 8px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -100px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    font-size: 0.85rem;
+    font-weight: normal;
+  }
+
+  .tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  .timeline {
+    position: relative;
+    margin: 30px 0 40px 10px;
+    border-left: 2px solid var(--accent-green);
+    padding-left: 30px;
+  }
+
+  .timeline-item {
+    position: relative;
+    margin-bottom: 24px;
+  }
+
+  .timeline-item:last-child {
+    margin-bottom: 0;
+  }
+
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -37px;
+    top: 4px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: var(--surface-color);
+    border: 3px solid var(--accent-green);
+  }
+
+  .timeline-date {
+    display: inline-block;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--text-main);
+    background-color: #e5e7eb;
+    padding: 2px 10px;
+    border-radius: var(--radius-pill);
+    margin-bottom: 8px;
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <div class="header">
+    <h1>Website Development Proposal</h1>
+    <p style="color: var(--text-main); font-weight: 600; font-size: 1.2rem; margin:0;">Raise Manufacturing & Trading PLC <span class="tag">B2B Strategy</span></p>
+  </div>
+
+  <h2>1. Executive Summary</h2>
+  <p>For nearly a decade, <strong>Raise Manufacturing & Trading PLC</strong> has built a formidable reputation in the mechanical and electrical engineering sector, transitioning into a leading industrial equipment manufacturing company. This proposal outlines a comprehensive web development strategy designed to reflect this legacy and your accelerated growth over the past two years. The primary goal is to establish a robust digital presence that clearly communicates your expertise in HVAC systems, showcases both legacy and recent flagship projects, and serves as a powerful B2B lead generation tool, featuring an integrated system for clients to request service quotes directly online. The resulting website will utilize a highly structured, modern visual system to ensure a trustworthy user experience across all devices.</p>
+
+  <h2>2. Project Scope & Architecture</h2>
+  <p>Based on your foundational 2024 company profile—and specifically designed to accommodate the massive accomplishments and new capabilities added since then—the website will be structured to serve the specific needs of corporate clients, contractors, and industrial partners seeking top-tier electromechanical solutions.</p>
+  
+  <h3>Core Pages:</h3>
+  <ul>
+    <li><strong>Home:</strong> A high-impact landing page establishing Raise's 10-year credibility, emphasizing the transition to industrial manufacturing, and directing users to core services.</li>
+    <li><strong>Projects (Portfolio):</strong> A structured showcase of completed work, prominently featuring flagship installations like the <strong>Zemen Bank modular chillers</strong> and <strong>Dire International Hotel Daikin VRF systems</strong>.</li>
+    <li><strong>Services & Manufacturing:</strong> Detailed breakdowns tailored to technical buyers, including: VRF/VRV Installation, Ventilation Duct Works, Electrical Control Panels, Cold Rooms, and System Design.</li>
+    <li><strong>Quote Request Portal:</strong> An interactive, multi-step form allowing potential clients to request customized pricing quotes for specific HVAC services and manufacturing needs directly through the website, streamlining your sales pipeline.</li>
+    <li><strong>About Us:</strong> Highlighting your journey, ISO/recognition certificates, workshop capabilities at Bole Brass, and commitment to quality.</li>
+    <li><strong>Contact & Support:</strong> Streamlined inquiry forms, direct contact info, and maintenance/support request portals for existing clients.</li>
+  </ul>
+
+  <h2>3. Design & Development Workflow</h2>
+  <p>The project follows a streamlined approach to ensure high efficiency and alignment with strategic brand goals. Visual identity and layouts are applied directly during the interactive development phase using <strong>Framer</strong> to ensure a highly responsive, performant live site from the start.</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Phase</th>
+        <th>Description</th>
+        <th>Key Deliverables</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="interactive-row">
+        <td><strong>Phase 1: Strategy, Brand Refresh & Architecture</strong></td>
+        <td>Conducting a lightweight modernization of your current brand identity (colors, typography) alongside finalizing sitemaps and technical requirements.</td>
+        <td>Refreshed Brand Mini-Guidelines, Approved Sitemap, Wireframes</td>
+      </tr>
+      <tr class="interactive-row">
+        <td><strong>Phase 2: Design & Platform Development</strong></td>
+        <td>Building the site natively in Framer, establishing the visual system, and integrating the interactive quote request forms directly within the environment.</td>
+        <td>Functional Beta Website with Quote Portal</td>
+      </tr>
+      <tr class="interactive-row">
+        <td><strong>Phase 3: Testing & Revisions</strong></td>
+        <td>Rigorous QA testing across devices and client feedback integration.</td>
+        <td>Approved Release Candidate</td>
+      </tr>
+      <tr class="interactive-row">
+        <td><strong>Phase 4: Launch & Infrastructure</strong></td>
+        <td>Connecting the custom domain and deploying to the live server.</td>
+        <td>Live Website, 1-Year Active Hosting</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>4. Estimated Project Timeline</h2>
+  <p>The project will be aggressively executed in a structured 4-week sprint to ensure rapid deployment without compromising quality.</p>
+
+  <div class="timeline">
+    <div class="timeline-item">
+      <span class="timeline-date">Week 1</span>
+      <h3 style="margin: 0 0 5px 0;">Discovery, Brand Refresh & Asset Gathering</h3>
+      <p style="margin: 0;">Finalizing sitemaps, updating the visual identity, and gathering assets—with a heavy focus on documenting your recent 2024-2026 milestones and projects.</p>
+    </div>
+    <div class="timeline-item">
+      <span class="timeline-date">Weeks 2 - 3</span>
+      <h3 style="margin: 0 0 5px 0;">Framer Development & Content Integration</h3>
+      <p style="margin: 0;">Building the interactive platform, inputting all technical copy regarding HVAC services, and structuring the comprehensive post-2024 portfolio.</p>
+    </div>
+    <div class="timeline-item">
+      <span class="timeline-date">Week 4</span>
+      <h3 style="margin: 0 0 5px 0;">QA Testing, Revisions & Launch</h3>
+      <p style="margin: 0;">Rigorous cross-device testing, incorporating final executive feedback, followed by domain connection and the official public launch.</p>
+    </div>
+  </div>
+
+  <h2>5. Investment & Pricing Structure</h2>
+  <p>This quote reflects a comprehensive, end-to-end service. It includes strategy, visual design integrated with Framer development, as well as the out-of-pocket costs for one year of domain registration and premium Framer hosting.</p>
+
+  <div style="background-color: var(--surface-color); border-left: 4px solid var(--accent-green); padding: 24px; margin-bottom: 30px; border-radius: 0 var(--radius-md) var(--radius-md) 0; box-shadow: 0 4px 15px rgba(0,0,0,0.03); border-top: 1px solid var(--border-color); border-right: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color);">
+    <h3 style="margin-top: 0; color: var(--accent-dark); font-size: 1.15rem; display: flex; align-items: center; gap: 8px;">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+      The Strategic Value of This Investment
+    </h3>
+    <p style="margin-bottom: 0; font-size: 0.95rem; line-height: 1.7;">
+      In the Ethiopian industrial sector, a website is a primary vetting tool for lucrative contracts. Your current portfolio—featuring major projects for Zemen Bank and international hotels—deserves a digital platform that matches the high-caliber engineering you deliver on-site. By utilizing high-performance architecture (Framer) and including a complimentary brand identity refresh in Phase 1, this platform is engineered to establish immediate authority, outpace local competitors, and act as a 24/7 lead generation tool. <strong>Securing just one major corporate HVAC contract through this enhanced digital credibility provides an immediate and substantial return on this initial investment.</strong>
+    </p>
+  </div>
+
+  <table class="price-table">
+    <thead>
+      <tr>
+        <th>Service / Expense Item</th>
+        <th>Cost (ETB)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="interactive-row">
+        <td><span class="tooltip">Strategy, Brand Refresh, & Architecture<span class="tooltiptext">Includes a lightweight modernization of your current brand identity, sitemap creation, and wireframing.</span></span></td>
+        <td>63,540.00</td>
+      </tr>
+      <tr class="interactive-row">
+        <td><span class="tooltip">Design & Platform Development (Framer)<span class="tooltiptext">Directly building the visual layout, quote portals, and responsive interactions in Framer.</span></span></td>
+        <td>232,980.00</td>
+      </tr>
+      <tr class="interactive-row">
+        <td><span class="tooltip">Testing, Revisions, & Launch<span class="tooltiptext">Cross-device QA, two rounds of revisions, and final deployment.</span></span></td>
+        <td>42,360.00</td>
+      </tr>
+      <tr class="interactive-row">
+        <td><strong>Domain Registration (1 Year)</strong></td>
+        <td><strong>3,000.00</strong></td>
+      </tr>
+      <tr class="interactive-row">
+        <td><strong>Framer Hosting Subscription (1 Year)</strong></td>
+        <td><strong>40,000.00</strong></td>
+      </tr>
+      <tr class="total-row">
+        <td>Total Estimated Investment</td>
+        <td>381,880.00 ETB</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <div class="disclaimer">
+    <strong>Billing Note:</strong> The total estimated investment provided above does not include VAT. If a formal VAT receipt is required for corporate tax purposes, a different pricing structure will apply. Domain and Hosting are covered for the first year; subsequent annual renewals will be the client's responsibility. Standard agreement includes two rounds of revisions during the testing phase.
+  </div>
+
+  <h2>6. Post-Launch Technical Support</h2>
+  <div class="warranty-box">
+    <strong style="color: var(--accent-dark); display: block; margin-bottom: 6px;">30-Day Complimentary Technical Warranty</strong>
+    To ensure a seamless handover and operational stability, this proposal includes <strong>30 days of free technical support</strong> immediately following the live launch. This covers any bug fixes, performance monitoring, form testing (including the quote portal), and minor platform adjustments. Any major structural additions or new features requested after launch will be scoped and billed separately.
+  </div>
+
+  <h2>7. Next Steps</h2>
+  <p>To proceed, please review this structure. Upon approval, I will provide a formal contract and request an initial deposit to secure a spot in the design sprint schedule and begin Phase 1.</p>
+
+  <div class="footer">
+    <div class="footer-content">
+      <span class="footer-name">Shalom Eshetu</span>
+      <span class="footer-title">Brand Identity Designer</span>
+    </div>
+    <a href="https://shalomeshetu.com" target="_blank" rel="noopener noreferrer" class="footer-link">
+      View Portfolio 
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+    </a>
+  </div>
+
+</div>
+
+</body>
+</html>
