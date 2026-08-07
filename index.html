@@ -3,41 +3,46 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Website Development Proposal: HVAC & Construction</title>
-<!-- Tailwind CSS for the Prototype specifically, but we protect the Proposal from it -->
+<title>Website Development Proposal — Raise Manufacturing &amp; Trading PLC</title>
+<meta name="description" content="Website development proposal for Raise Manufacturing &amp; Trading PLC — B2B digital platform, quote request portal, and brand refresh. Prepared by Shalom Eshetu.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#1a1a1a">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<!-- Tailwind is used ONLY inside the prototype overlay. The proposal below is protected from it. -->
 <script src="https://cdn.tailwindcss.com"></script>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
-
   /* ==========================================================================
-     PROPOSAL STYLES (Aggressively scoped with !important to stop Tailwind)
+     PROPOSAL STYLES (scoped to #proposal-container, armoured against Tailwind)
      ========================================================================== */
   :root {
     --bg-color: #f4f5f7;
     --surface-color: #ffffff;
     --text-main: #111111;
-    --text-muted: #4b5563; 
+    --text-muted: #4b5563;
     --accent-green: #14f85e;
     --accent-dark: #1a1a1a;
     --border-color: #e5e7eb;
     --radius-lg: 24px;
     --radius-md: 12px;
     --radius-pill: 9999px;
+    --font-stack: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   }
 
   body {
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-stack);
     background-color: var(--bg-color);
     color: var(--text-main);
     margin: 0;
     padding: 20px 10px;
+    -webkit-font-smoothing: antialiased;
   }
 
   @media (min-width: 768px) {
     body { padding: 40px 20px; }
   }
 
-  /* Protect the proposal area from Tailwind's preflight resets */
   #proposal-container {
     max-width: 900px;
     margin: 0 auto;
@@ -79,7 +84,7 @@
     width: fit-content !important;
     font-size: 1.25rem !important;
     font-weight: 700 !important;
-    margin: 48px 0 24px 0 !important; /* Forced breathing room */
+    margin: 48px 0 24px 0 !important;
     background-color: var(--accent-dark) !important;
     color: white !important;
     padding: 10px 20px !important;
@@ -136,6 +141,42 @@
     border-radius: 50% !important;
   }
 
+  /* Muted list variant for exclusions */
+  #proposal-container ul.excl li::before {
+    background-color: #d1d5db !important;
+  }
+
+  #proposal-container .meta-grid {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 14px 32px !important;
+    margin-top: 24px !important;
+    padding-top: 20px !important;
+    border-top: 1px solid var(--border-color) !important;
+  }
+
+  @media (min-width: 600px) {
+    #proposal-container .meta-grid { grid-template-columns: repeat(3, 1fr) !important; }
+  }
+
+  #proposal-container .meta-grid .meta-label {
+    display: block !important;
+    font-size: 0.72rem !important;
+    font-weight: 800 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.08em !important;
+    color: #9ca3af !important;
+    margin-bottom: 2px !important;
+  }
+
+  #proposal-container .meta-grid .meta-value {
+    display: block !important;
+    font-size: 0.98rem !important;
+    font-weight: 700 !important;
+    color: var(--text-main) !important;
+    line-height: 1.4 !important;
+  }
+
   #proposal-container .tag {
     display: inline-block !important;
     background-color: var(--accent-green) !important;
@@ -161,19 +202,26 @@
   #proposal-container table {
     width: 100% !important;
     border-collapse: collapse !important;
-    min-width: 600px !important; 
-    table-layout: fixed !important; /* Enforces column widths */
+    table-layout: fixed !important;
   }
 
-  #proposal-container th, 
+  /* Only the wide workflow table needs to scroll on small screens */
+  #proposal-container .workflow-table { min-width: 600px !important; }
+
+  #proposal-container th,
   #proposal-container td {
-    padding: 20px !important; 
+    padding: 20px !important;
     text-align: left !important;
-    vertical-align: top !important; /* Aligns text to the top */
+    vertical-align: top !important;
     border-bottom: 1px solid var(--border-color) !important;
-    font-size: 1rem !important; 
+    font-size: 1rem !important;
     line-height: 1.6 !important;
     word-wrap: break-word !important;
+  }
+
+  @media (max-width: 500px) {
+    #proposal-container th,
+    #proposal-container td { padding: 14px 12px !important; font-size: 0.95rem !important; }
   }
 
   #proposal-container th {
@@ -182,26 +230,53 @@
     font-weight: 700 !important;
   }
 
-  /* Specific Column Widths for Workflow Table */
   #proposal-container .workflow-table th:nth-child(1),
   #proposal-container .workflow-table td:nth-child(1) { width: 25% !important; }
-  
+
   #proposal-container .workflow-table th:nth-child(2),
   #proposal-container .workflow-table td:nth-child(2) { width: 45% !important; }
-  
+
   #proposal-container .workflow-table th:nth-child(3),
   #proposal-container .workflow-table td:nth-child(3) { width: 30% !important; }
 
   #proposal-container tr:last-child td { border-bottom: none !important; }
 
-  #proposal-container .price-table td:last-child, 
-  #proposal-container .price-table th:last-child { text-align: right !important; }
+  #proposal-container .price-table td:last-child,
+  #proposal-container .price-table th:last-child {
+    text-align: right !important;
+    font-variant-numeric: tabular-nums !important;
+  }
+
+  #proposal-container .subtotal-row {
+    background-color: #fbfbfc !important;
+    font-weight: 700 !important;
+  }
+
+  #proposal-container .subtotal-row td { border-top: 2px solid var(--border-color) !important; }
+
+  #proposal-container .group-row td {
+    background-color: #f9fafb !important;
+    font-size: 0.75rem !important;
+    font-weight: 800 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.08em !important;
+    color: #6b7280 !important;
+    padding-top: 14px !important;
+    padding-bottom: 14px !important;
+  }
 
   #proposal-container .total-row {
-    background-color: #f9fafb !important;
+    background-color: var(--accent-dark) !important;
     font-weight: 800 !important;
     font-size: 1.15rem !important;
   }
+
+  #proposal-container .total-row td {
+    color: #ffffff !important;
+    border-bottom: none !important;
+  }
+
+  #proposal-container .total-row td:last-child { color: var(--accent-green) !important; }
 
   #proposal-container .strategic-box {
     background-color: var(--surface-color) !important;
@@ -223,8 +298,9 @@
     font-size: 0.95rem !important;
     color: #92400e !important;
     margin-top: 24px !important;
+    line-height: 1.65 !important;
   }
-  
+
   #proposal-container .warranty-box {
     background-color: #f0fdf4 !important;
     border-left: 4px solid #22c55e !important;
@@ -235,9 +311,22 @@
     margin-bottom: 40px !important;
   }
 
+  #proposal-container .req-box {
+    background-color: #f8fafc !important;
+    border: 1px solid var(--border-color) !important;
+    border-left: 4px solid var(--accent-dark) !important;
+    padding: 24px !important;
+    border-radius: 0 var(--radius-md) var(--radius-md) 0 !important;
+    margin: 32px 0 40px 0 !important;
+  }
+
+  #proposal-container .req-box ul { margin-bottom: 0 !important; }
+  #proposal-container .req-box ul li:last-child { margin-bottom: 0 !important; }
+  #proposal-container .req-box ul li::before { background-color: var(--accent-dark) !important; }
+
   #proposal-container .timeline {
     position: relative !important;
-    margin: 32px 0 48px 16px !important;
+    margin: 32px 0 32px 16px !important;
     border-left: 2px solid var(--accent-green) !important;
     padding-left: 24px !important;
   }
@@ -284,7 +373,18 @@
 
   #proposal-container .prototype-cta-container {
     text-align: center !important;
-    margin: 48px 0 !important;
+    margin: 40px 0 !important;
+    padding: 32px 24px !important;
+    background-color: #f9fafb !important;
+    border: 1px solid var(--border-color) !important;
+    border-radius: var(--radius-md) !important;
+  }
+
+  #proposal-container .prototype-cta-container p {
+    max-width: 520px !important;
+    margin: 16px auto 0 auto !important;
+    font-size: 0.92rem !important;
+    line-height: 1.6 !important;
   }
 
   #proposal-container .prototype-btn {
@@ -297,6 +397,7 @@
     padding: 18px 32px !important;
     border-radius: var(--radius-pill) !important;
     font-weight: 800 !important;
+    font-family: var(--font-stack) !important;
     text-decoration: none !important;
     text-transform: uppercase !important;
     letter-spacing: 0.05em !important;
@@ -312,11 +413,13 @@
     #proposal-container .prototype-btn { width: auto !important; font-size: 1.05rem !important; }
   }
 
-  #proposal-container .prototype-btn:hover {
+  #proposal-container .prototype-btn:hover,
+  #proposal-container .prototype-btn:focus-visible {
     transform: translateY(-3px) !important;
     box-shadow: 0 8px 25px rgba(20, 248, 94, 0.5) !important;
     background-color: #1a1a1a !important;
     color: #14f85e !important;
+    outline: none !important;
   }
 
   #proposal-container .tooltip {
@@ -337,21 +440,51 @@
     position: absolute !important;
     z-index: 10 !important;
     bottom: 125% !important;
-    left: 50% !important;
-    transform: translateX(-50%) !important;
+    left: 0 !important;
     opacity: 0 !important;
     transition: opacity 0.3s !important;
     font-size: 0.9rem !important;
     font-weight: 400 !important;
     line-height: 1.5 !important;
     box-shadow: 0 10px 25px rgba(0,0,0,0.2) !important;
+    pointer-events: none !important;
   }
 
   #proposal-container .tooltip:hover .tooltiptext,
   #proposal-container .tooltip:active .tooltiptext,
-  #proposal-container .tooltip:focus .tooltiptext {
+  #proposal-container .tooltip:focus .tooltiptext,
+  #proposal-container .tooltip:focus-visible .tooltiptext {
     visibility: visible !important;
     opacity: 1 !important;
+  }
+
+  #proposal-container .sign-grid {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
+    margin: 32px 0 0 0 !important;
+    padding: 28px !important;
+    border: 2px dashed var(--border-color) !important;
+    border-radius: var(--radius-md) !important;
+  }
+
+  @media (min-width: 600px) {
+    #proposal-container .sign-grid { grid-template-columns: 1fr 1fr !important; }
+  }
+
+  #proposal-container .sign-line {
+    border-bottom: 1px solid #9ca3af !important;
+    height: 42px !important;
+    margin-bottom: 8px !important;
+  }
+
+  #proposal-container .sign-caption {
+    display: block !important;
+    font-size: 0.78rem !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.06em !important;
+    color: #6b7280 !important;
   }
 
   #proposal-container .footer {
@@ -376,41 +509,45 @@
     }
   }
 
+  #proposal-container .footer a.contact-link {
+    color: var(--text-muted) !important;
+    text-decoration: none !important;
+    font-weight: 600 !important;
+  }
+
+  #proposal-container .footer a.contact-link:hover { color: var(--text-main) !important; }
+
   /* ==========================================================================
-     PROTOTYPE MODAL STYLES (Overlay mechanics)
+     PROTOTYPE MODAL (overlay mechanics)
      ========================================================================== */
   #prototype-overlay {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: #f4f5f7; 
+    inset: 0;
+    background-color: #f4f5f7;
     z-index: 9999;
-    display: none; 
+    display: none;
     overflow-y: auto;
     opacity: 0;
-    transition: opacity 0.4s ease;
+    transition: opacity 0.35s ease;
   }
 
-  #prototype-overlay.active {
-    display: block;
-    opacity: 1;
-  }
+  #prototype-overlay.is-open { display: block; }
+  #prototype-overlay.is-visible { opacity: 1; }
 
   #close-prototype-btn {
     position: fixed;
-    top: 20px;
-    right: 20px;
+    top: 16px;
+    right: 16px;
     background-color: #1a1a1a;
     color: #14f85e;
-    border: none;
-    width: 50px;
-    height: 50px;
+    border: 2px solid rgba(255,255,255,0.15);
+    width: 48px;
+    height: 48px;
     border-radius: 50%;
-    font-size: 24px;
+    font-size: 26px;
+    line-height: 1;
     cursor: pointer;
-    z-index: 10000;
+    z-index: 10001;
     box-shadow: 0 4px 15px rgba(0,0,0,0.3);
     display: flex;
     align-items: center;
@@ -418,15 +555,29 @@
     transition: transform 0.2s, background-color 0.2s;
   }
 
-  #close-prototype-btn:hover {
+  #close-prototype-btn:hover,
+  #close-prototype-btn:focus-visible {
     transform: scale(1.1);
     background-color: #ff3333;
     color: white;
+    outline: none;
   }
 
-  /* Prototype specific base styles */
+  /* Banner making clear this is a concept, not the finished site */
+  #proto-banner {
+    background-color: #1a1a1a;
+    color: #d1d5db;
+    font-size: 0.8rem;
+    text-align: center;
+    padding: 10px 64px 10px 16px;
+    letter-spacing: 0.02em;
+    border-bottom: 1px solid #333;
+  }
+
+  #proto-banner strong { color: #14f85e; font-weight: 700; }
+
   .proto-body {
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-stack);
     color: #111111;
   }
   .proto-bg-neon { background-color: #14f85e; }
@@ -434,127 +585,310 @@
   .proto-border-neon { border-color: #14f85e; }
   .proto-bg-dark { background-color: #1a1a1a; }
   .proto-text-dark { color: #1a1a1a; }
-  
-  .proto-fade-in-up {
-    animation: protoFadeInUp 0.4s ease-out forwards;
+
+  /* Self-contained image placeholders — no external requests, never break */
+  .proto-ph {
+    position: relative;
+    background-color: #1a1a1a;
+    background-image:
+      linear-gradient(rgba(20,248,94,0.16) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(20,248,94,0.16) 1px, transparent 1px);
+    background-size: 32px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 24px;
   }
+
+  .proto-ph span {
+    color: #14f85e;
+    font-weight: 700;
+    font-size: 0.95rem;
+    letter-spacing: 0.04em;
+    line-height: 1.5;
+  }
+
+  .proto-ph span small {
+    display: block;
+    color: #9ca3af;
+    font-weight: 500;
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-top: 8px;
+  }
+
+  .proto-fade-in-up { animation: protoFadeInUp 0.4s ease-out forwards; }
+
   @keyframes protoFadeInUp {
     from { opacity: 0; transform: translateY(15px); }
     to { opacity: 1; transform: translateY(0); }
   }
+
   .proto-nav-glass {
     background: rgba(26, 26, 26, 0.85);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .proto-fade-in-up { animation: none !important; }
+    #prototype-overlay { transition: none !important; }
+    #proposal-container .prototype-btn { transition: none !important; }
+    #proposal-container .prototype-btn:hover { transform: none !important; }
+  }
+
+  /* Shown only if the Tailwind CDN fails to load (offline / blocked network) */
+  #proto-cdn-warning {
+    display: none;
+    margin: 24px;
+    padding: 20px 24px;
+    background: #fff9e6;
+    border-left: 4px solid #f59e0b;
+    border-radius: 0 12px 12px 0;
+    color: #92400e;
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  /* ==========================================================================
+     PRINT / PDF
+     ========================================================================== */
+  @media print {
+    body { background: #fff !important; padding: 0 !important; }
+
+    #proposal-container {
+      box-shadow: none !important;
+      border-radius: 0 !important;
+      max-width: 100% !important;
+      padding: 0 !important;
+      margin: 0 !important;
+    }
+
+    /* The prototype is interactive-only — never print it */
+    #prototype-overlay,
+    #close-prototype-btn,
+    .prototype-btn { display: none !important; }
+
+    #proposal-container .prototype-cta-container {
+      background: #fff !important;
+      border: 1px solid #ccc !important;
+    }
+
+    #proposal-container .prototype-cta-container::after {
+      content: 'Interactive prototype available in the digital version of this proposal.';
+      display: block;
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: #111;
+    }
+
+    #proposal-container h2 {
+      background-color: #1a1a1a !important;
+      color: #fff !important;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+      break-after: avoid;
+      page-break-after: avoid;
+    }
+
+    #proposal-container th,
+    #proposal-container .total-row td,
+    #proposal-container .strategic-box,
+    #proposal-container .warranty-box,
+    #proposal-container .disclaimer,
+    #proposal-container .req-box {
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    #proposal-container .table-responsive,
+    #proposal-container .strategic-box,
+    #proposal-container .warranty-box,
+    #proposal-container .req-box,
+    #proposal-container .sign-grid,
+    #proposal-container .timeline-item,
+    #proposal-container tr {
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+
+    #proposal-container .workflow-table { min-width: 0 !important; }
+    #proposal-container .tooltip .tooltiptext { display: none !important; }
+    #proposal-container .footer { break-inside: avoid; }
+
+    a[href^="http"]::after { content: ' (' attr(href) ')'; font-size: 0.8em; color: #555; }
+    a.contact-link[href]::after { content: ''; }
   }
 </style>
 </head>
 <body>
 
 <div id="proposal-container">
-  
+
   <div class="header">
     <h1>Website Development Proposal</h1>
     <p style="color: var(--text-main) !important; font-weight: 700 !important; font-size: 1.3rem !important; margin:0 !important; line-height: 1.4 !important;">
-      Raise Manufacturing & Trading PLC <span class="tag">B2B Strategy</span>
+      Raise Manufacturing &amp; Trading PLC <span class="tag">B2B Strategy</span>
     </p>
+
+    <div class="meta-grid">
+      <div>
+        <span class="meta-label">Prepared for</span>
+        <span class="meta-value">Raise Manufacturing &amp; Trading PLC<br>A.A Bole Brass, K-Kare Bldg</span>
+      </div>
+      <div>
+        <span class="meta-label">Prepared by</span>
+        <span class="meta-value">Shalom Eshetu<br>Brand Identity Designer</span>
+      </div>
+      <div>
+        <span class="meta-label">Date &amp; validity</span>
+        <span class="meta-value">6 August 2026<br>Valid until 27 August 2026</span>
+      </div>
+    </div>
   </div>
 
   <h2>1. Executive Summary</h2>
-  <p>For nearly a decade, <strong>Raise Manufacturing & Trading PLC</strong> has built a formidable reputation in the mechanical and electrical engineering sector, transitioning into a leading industrial equipment manufacturing company. This proposal outlines a comprehensive web development strategy designed to reflect this legacy and your accelerated growth over the past two years.</p>
-  <p>The primary goal is to establish a robust digital presence that clearly communicates your expertise in HVAC systems, showcases both legacy and recent flagship projects, and serves as a powerful B2B lead generation tool, featuring an integrated system for clients to request service quotes directly online. The resulting website will utilize a highly structured, modern visual system to ensure a trustworthy user experience across all devices.</p>
+  <p><strong>Raise Manufacturing &amp; Trading PLC</strong> has built a substantial reputation in mechanical and electrical engineering, growing from an installation and service business into an industrial equipment manufacturer with its own fabrication workshop.</p>
+  <p>Most of that growth is undocumented. Your last company profile is already two years behind the business, and none of it is visible online — so corporate clients, consultants, and contractors shortlisting HVAC partners have no way to verify your current capability before the first meeting. Every contract is won from a standing start.</p>
+  <p>This proposal sets out a website built specifically to close that gap: a platform that documents your delivered projects, states your manufacturing capability in the technical language your buyers use, and captures qualified enquiries through a structured quote request portal.</p>
 
-  <h2>2. Project Scope & Architecture</h2>
-  <p>Based on your foundational 2024 company profile—and specifically designed to accommodate the massive accomplishments and new capabilities added since then—the website will be structured to serve the specific needs of corporate clients, contractors, and industrial partners seeking top-tier electromechanical solutions.</p>
-  
-  <h3>Core Pages:</h3>
+  <h2>2. What the Website Must Achieve</h2>
+  <p>Every decision in this project is measured against four objectives:</p>
   <ul>
-    <li><strong>Home:</strong> A high-impact landing page establishing Raise's 10-year credibility, emphasizing the transition to industrial manufacturing, and directing users to core services.</li>
-    <li><strong>Projects (Portfolio):</strong> A structured showcase of completed work, prominently featuring flagship installations like the <strong>Zemen Bank modular chillers</strong> and <strong>Dire International Hotel Daikin VRF systems</strong>.</li>
-    <li><strong>Services & Manufacturing:</strong> Detailed breakdowns tailored to technical buyers, including: VRF/VRV Installation, Ventilation Duct Works, Electrical Control Panels, Cold Rooms, and System Design.</li>
-    <li><strong>Quote Request Portal:</strong> An interactive, multi-step form allowing potential clients to request customized pricing quotes for specific HVAC services and manufacturing needs directly through the website, streamlining your sales pipeline.</li>
-    <li><strong>About Us:</strong> Highlighting your journey, ISO/recognition certificates, workshop capabilities at Bole Brass, and commitment to quality.</li>
-    <li><strong>Contact & Support:</strong> Streamlined inquiry forms, direct contact info, and maintenance/support request portals for existing clients.</li>
+    <li><strong>Pass the vetting stage.</strong> When a consultant or procurement officer searches for Raise before issuing a tender, they find evidence of delivered work at the scale they need.</li>
+    <li><strong>Convert credibility into enquiries.</strong> A structured quote request portal that captures project type, scale, and technical requirement — so enquiries arrive qualified rather than as a blank email.</li>
+    <li><strong>Document the manufacturing shift.</strong> Make clear that Raise now fabricates, not only installs — the capability that separates you from the installation-only competition.</li>
+    <li><strong>Own the search result.</strong> Rank for the terms your buyers actually search: industrial HVAC, VRF installation, cold room construction, and ventilation duct works in Ethiopia.</li>
   </ul>
 
-  <h2>3. Design & Development Workflow</h2>
-  <p>The project follows a streamlined approach to ensure high efficiency and alignment with strategic brand goals. Visual identity and layouts are applied directly during the interactive development phase using <strong>Framer</strong> to ensure a highly responsive, performant live site from the start.</p>
+  <h2>3. Project Scope &amp; Architecture</h2>
+  <p>The structure below is an architecture, not a content list. It is drawn from your 2024 company profile purely as a starting point — that document no longer reflects the business, so the current production, capability, and project information you supply in Week 1 is what will actually populate these pages. The structure is deliberately built to absorb it.</p>
+
+  <h3>Core Pages</h3>
+  <ul>
+    <li><strong>Home:</strong> A high-impact landing page establishing Raise's track record, emphasising the transition into industrial manufacturing, and directing visitors to the core services.</li>
+    <li><strong>Projects (Portfolio):</strong> A structured, expandable showcase of completed work — including earlier flagship installations such as the <strong>Zemen Bank modular chillers</strong> and the <strong>Dire International Hotel Daikin VRF systems</strong>, alongside the more recent projects that were never documented. Final selection and project details are confirmed with you in Week 1.</li>
+    <li><strong>Services &amp; Manufacturing:</strong> Detailed breakdowns written for technical buyers. The 2024 service list — VRF/VRV installation, ventilation duct works, electrical control panels, cold rooms, kitchen and laundry systems, and system design — is the baseline; any capability added since will be built in at no extra cost, provided it is confirmed during Phase 1.</li>
+    <li><strong>Quote Request Portal:</strong> A structured multi-step form allowing clients to request pricing for specific services, routing complete enquiries directly to your inbox.</li>
+    <li><strong>About Us:</strong> Company journey, recommendation letters and certificates, and the workshop capability at Bole Brass.</li>
+    <li><strong>Contact &amp; Support:</strong> Direct contact details, enquiry form, and a maintenance request route for existing clients.</li>
+  </ul>
+
+  <h3>Included in Every Page</h3>
+  <ul>
+    <li>Fully responsive layouts, tested on phone, tablet, and desktop</li>
+    <li>On-page SEO setup: page titles, meta descriptions, heading structure, image alt text, sitemap</li>
+    <li>A brand identity refresh applied consistently across the site (Phase 1 — line-itemed in Section 6)</li>
+    <li>Two consolidated rounds of revisions during Phase 3</li>
+    <li>Analytics installed so you can see who is visiting and what they request</li>
+  </ul>
+
+  <h3>Not Included in This Quote</h3>
+  <p>Named explicitly so there are no assumptions on either side. Any of these can be quoted separately:</p>
+  <ul class="excl">
+    <li>Professional photography or video of your sites, installations, and workshop — <strong>strongly recommended</strong>, see Section 5</li>
+    <li>Amharic translation or a multilingual version of the site</li>
+    <li>Ongoing SEO campaigns, content marketing, or paid advertising</li>
+    <li>E-commerce, online payment processing, or customer login areas</li>
+    <li>Integration with ERP, CRM, or accounting systems</li>
+    <li>A full brand identity rebuild — Phase 1 is a refresh of your existing identity, not a ground-up redesign</li>
+  </ul>
+
+  <h2>4. Design &amp; Development Workflow</h2>
+  <p>Visual design and layout are applied directly during the interactive build phase using <strong>Framer</strong>, rather than being drawn in a static tool and rebuilt afterwards. This removes an entire handover stage and means what you approve is the live, responsive site.</p>
 
   <div class="prototype-cta-container">
-    <button id="open-prototype-btn" class="prototype-btn">
+    <button id="open-prototype-btn" class="prototype-btn" type="button">
       Interact with Live Prototype
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
         <path d="M5 12h14"></path>
         <path d="m12 5 7 7-7 7"></path>
       </svg>
     </button>
+    <p><strong>Please note:</strong> this is a directional concept built to demonstrate structure, navigation, and interaction — not the finished design. Imagery is placeholder, and layout, photography, and copy will all be developed in Phase 2.</p>
   </div>
 
   <div class="table-responsive">
     <table class="workflow-table">
       <thead>
         <tr>
-          <th>Phase</th>
-          <th>Description</th>
-          <th>Key Deliverables</th>
+          <th scope="col">Phase</th>
+          <th scope="col">Description</th>
+          <th scope="col">Key Deliverables</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td><strong>Phase 1:<br>Strategy & Architecture</strong></td>
-          <td>Conducting a lightweight modernization of your current brand identity alongside finalizing sitemaps and technical requirements.</td>
-          <td>Refreshed Brand Guidelines, Approved Sitemap</td>
+          <td><strong>Phase 1:<br>Strategy &amp; Architecture</strong></td>
+          <td>A focused modernisation of your existing brand identity, alongside finalised sitemap and technical requirements.</td>
+          <td>Refreshed brand guidelines, approved sitemap</td>
         </tr>
         <tr>
-          <td><strong>Phase 2:<br>Design & Development</strong></td>
-          <td>Building the site natively in Framer, establishing the visual system, and integrating interactive quote request forms.</td>
-          <td>Functional Beta Website with Quote Portal</td>
+          <td><strong>Phase 2:<br>Design &amp; Development</strong></td>
+          <td>Building the site natively in Framer, establishing the visual system, and integrating the quote request portal.</td>
+          <td>Functional beta website with quote portal</td>
         </tr>
         <tr>
-          <td><strong>Phase 3:<br>Testing & Revisions</strong></td>
-          <td>Rigorous QA testing across devices and client feedback integration.</td>
-          <td>Approved Release Candidate</td>
+          <td><strong>Phase 3:<br>Testing &amp; Revisions</strong></td>
+          <td>Cross-device QA testing and integration of two consolidated rounds of client feedback.</td>
+          <td>Approved release candidate</td>
         </tr>
         <tr>
-          <td><strong>Phase 4:<br>Launch & Infrastructure</strong></td>
-          <td>Connecting the custom domain and deploying to the live server.</td>
-          <td>Live Website, 1-Year Active Hosting</td>
+          <td><strong>Phase 4:<br>Launch &amp; Handover</strong></td>
+          <td>Domain connection, deployment, analytics verification, and a walkthrough of how to update the site.</td>
+          <td>Live website, 1-year active hosting, handover session</td>
         </tr>
       </tbody>
     </table>
   </div>
 
-  <h2>4. Estimated Project Timeline</h2>
-  <p>The project will be aggressively executed in a structured 4-week sprint to ensure rapid deployment without compromising quality.</p>
+  <h2>5. Timeline &amp; Requirements</h2>
+  <p>The project runs as a structured four-week sprint. <strong>The four weeks begin once the deposit is received and the assets listed below are in hand</strong> — not on the date of signature. This is the single biggest factor in hitting the launch date.</p>
 
   <div class="timeline">
     <div class="timeline-item">
       <span class="timeline-date">Week 1</span>
-      <h3 style="margin: 0 0 8px 0 !important;">Discovery, Brand Refresh & Asset Gathering</h3>
-      <p style="margin: 0 !important;">Finalizing sitemaps, updating the visual identity, and gathering assets—with a heavy focus on documenting your recent 2024-2026 milestones and projects.</p>
+      <h3 style="margin: 0 0 8px 0 !important;">Discovery, Brand Refresh &amp; Asset Gathering</h3>
+      <p style="margin: 0 !important;">Finalising the sitemap, refreshing the visual identity, and gathering assets — with a heavy focus on documenting your 2024–2026 projects and new manufacturing capability.</p>
     </div>
     <div class="timeline-item">
-      <span class="timeline-date">Weeks 2 - 3</span>
-      <h3 style="margin: 0 0 8px 0 !important;">Framer Development & Content Integration</h3>
-      <p style="margin: 0 !important;">Building the interactive platform, inputting all technical copy regarding HVAC services, and structuring the comprehensive post-2024 portfolio.</p>
+      <span class="timeline-date">Weeks 2 – 3</span>
+      <h3 style="margin: 0 0 8px 0 !important;">Framer Development &amp; Content Integration</h3>
+      <p style="margin: 0 !important;">Building the platform, writing and placing the technical service copy, and structuring the full project portfolio.</p>
     </div>
     <div class="timeline-item">
       <span class="timeline-date">Week 4</span>
-      <h3 style="margin: 0 0 8px 0 !important;">QA Testing, Revisions & Launch</h3>
-      <p style="margin: 0 !important;">Rigorous cross-device testing, incorporating final executive feedback, followed by domain connection and the official public launch.</p>
+      <h3 style="margin: 0 0 8px 0 !important;">QA Testing, Revisions &amp; Launch</h3>
+      <p style="margin: 0 !important;">Cross-device testing, both revision rounds, domain connection, and public launch.</p>
     </div>
   </div>
 
-  <h2>5. Investment & Pricing Structure</h2>
-  <p>This quote reflects a comprehensive, end-to-end service. It includes strategy, visual design integrated with Framer development, as well as the out-of-pocket costs for one year of domain registration and premium Framer hosting.</p>
+  <div class="req-box">
+    <h3 style="margin-top: 0 !important;">What I Need From Raise</h3>
+    <p style="font-size: 1rem !important;">A four-week timeline only holds if these arrive on schedule. Delays here move the launch date by the same number of days.</p>
+    <ul>
+      <li><strong>One named decision-maker</strong> with authority to give final approval, available for a weekly check-in.</li>
+      <li><strong>Project photography</strong> — the best available images of Zemen Bank, Dire International Hotel, the Bole Brass workshop, and your teams on site. Delivered in Week 1. If suitable photography does not exist, tell me early: this is the one gap that materially limits how good the site can look, and I can quote a shoot separately.</li>
+      <li><strong>Brand files</strong> — your logo in vector format (AI, EPS, SVG or PDF), if available.</li>
+      <li><strong>Current production &amp; capability information.</strong> Your 2024 profile is the only written record I have, and it is two years out of date. This does not need to be a polished document — a plain list is enough: what you now manufacture in-house, your current service lines, and the projects completed since 2024. I will write it into publishable copy. This is the single most important input in the project; without it the site documents the company you were, not the one you are.</li>
+      <li><strong>Technical source material</strong> — equipment specifications, project details, certificates, and recommendation letters.</li>
+      <li><strong>Consolidated feedback</strong> — one combined response per round, within three working days.</li>
+      <li><strong>Domain access</strong> — registrar login for your existing domain, or authority to register a new one on your behalf.</li>
+    </ul>
+  </div>
+
+  <h2>6. Investment</h2>
+  <p>This is a fixed quote, not an estimate. It covers strategy, brand refresh, design and development, testing, and launch — plus the first year of domain registration and Framer hosting, which are passed through at cost.</p>
 
   <div class="strategic-box">
     <h3 style="margin-top: 0 !important; color: var(--accent-dark) !important; font-size: 1.2rem !important; display: flex !important; align-items: center !important; gap: 10px !important;">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent-green)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
-      The Strategic Value of This Investment
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent-green)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+      What This Investment Buys
     </h3>
     <p style="margin-bottom: 0 !important; font-size: 1rem !important; line-height: 1.7 !important;">
-      In the Ethiopian industrial sector, a website is a primary vetting tool for lucrative contracts. Your current portfolio—featuring major projects for Zemen Bank and international hotels—deserves a digital platform that matches the high-caliber engineering you deliver on-site. By utilizing high-performance architecture (Framer) and including a complimentary brand identity refresh in Phase 1, this platform is engineered to establish immediate authority, outpace local competitors, and act as a 24/7 lead generation tool. <strong>Securing just one major corporate HVAC contract through this enhanced digital credibility provides an immediate and substantial return on this initial investment.</strong>
+      In the Ethiopian industrial sector, a website is a vetting tool. Consultants and procurement teams check it before you are invited to quote — and a company that has installed chillers for Zemen Bank and VRF systems for an international hotel is currently invisible at exactly that moment. This platform is built to make your delivered work verifiable, to state your manufacturing capability clearly, and to capture qualified enquiries around the clock. <strong>A single major HVAC contract won through that credibility returns this investment several times over.</strong>
     </p>
   </div>
 
@@ -562,98 +896,174 @@
     <table class="price-table">
       <thead>
         <tr>
-          <th style="width: 70% !important;">Service / Expense Item</th>
-          <th style="width: 30% !important;">Cost (ETB)</th>
+          <th scope="col" style="width: 68% !important;">Service / Expense Item</th>
+          <th scope="col" style="width: 32% !important;">Cost (ETB)</th>
         </tr>
       </thead>
       <tbody>
+        <tr class="group-row"><td colspan="2">Professional Services</td></tr>
         <tr>
-          <td><span class="tooltip" tabindex="0">Strategy, Brand Refresh, & Architecture<span class="tooltiptext">Includes a lightweight modernization of your current brand identity, sitemap creation, and wireframing.</span></span></td>
+          <td><span class="tooltip" tabindex="0">Strategy, Brand Refresh &amp; Architecture<span class="tooltiptext">A focused modernisation of your existing brand identity, plus sitemap creation and wireframing.</span></span></td>
           <td>63,540.00</td>
         </tr>
         <tr>
-          <td><span class="tooltip" tabindex="0">Design & Platform Development (Framer)<span class="tooltiptext">Directly building the visual layout, quote portals, and responsive interactions in Framer.</span></span></td>
+          <td><span class="tooltip" tabindex="0">Design &amp; Platform Development (Framer)<span class="tooltiptext">Building the visual layout, quote request portal, and responsive interactions directly in Framer.</span></span></td>
           <td>232,980.00</td>
         </tr>
         <tr>
-          <td><span class="tooltip" tabindex="0">Testing, Revisions, & Launch<span class="tooltiptext">Cross-device QA, two rounds of revisions, and final deployment.</span></span></td>
+          <td><span class="tooltip" tabindex="0">Testing, Revisions &amp; Launch<span class="tooltiptext">Cross-device QA, two consolidated rounds of revisions, deployment, and handover.</span></span></td>
           <td>42,360.00</td>
         </tr>
+        <tr class="subtotal-row">
+          <td>Professional Services Subtotal</td>
+          <td>338,880.00</td>
+        </tr>
+
+        <tr class="group-row"><td colspan="2">Third-Party Costs (Passed Through at Cost, Year 1)</td></tr>
         <tr>
-          <td><strong>Domain Registration (1 Year)</strong></td>
-          <td><strong>3,000.00</strong></td>
+          <td>Domain Registration (1 Year)</td>
+          <td>3,000.00</td>
         </tr>
         <tr>
-          <td><strong>Framer Hosting Subscription (1 Year)</strong></td>
-          <td><strong>40,000.00</strong></td>
+          <td><span class="tooltip" tabindex="0">Framer Hosting Subscription (1 Year)<span class="tooltiptext">Includes hosting, SSL certificate, global CDN delivery, and the CMS that lets you add new projects yourself.</span></span></td>
+          <td>40,000.00</td>
         </tr>
+        <tr class="subtotal-row">
+          <td>Third-Party Subtotal</td>
+          <td>43,000.00</td>
+        </tr>
+
         <tr class="total-row">
-          <td>Total Estimated Investment</td>
+          <td>Total Investment</td>
           <td>381,880.00 ETB</td>
         </tr>
       </tbody>
     </table>
   </div>
-  
+
+  <h3>Payment Schedule</h3>
+  <div class="table-responsive">
+    <table class="price-table">
+      <thead>
+        <tr>
+          <th scope="col" style="width: 68% !important;">Milestone</th>
+          <th scope="col" style="width: 32% !important;">Amount (ETB)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>50%</strong> — on acceptance, to secure the sprint slot and begin Phase 1</td>
+          <td>190,940.00</td>
+        </tr>
+        <tr>
+          <td><strong>25%</strong> — on approval of the beta site at the end of Phase 2</td>
+          <td>95,470.00</td>
+        </tr>
+        <tr>
+          <td><strong>25%</strong> — on completion, prior to public launch</td>
+          <td>95,470.00</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
   <div class="disclaimer">
-    <strong>Billing Note:</strong> The total estimated investment provided above does not include VAT. If a formal VAT receipt is required for corporate tax purposes, a different pricing structure will apply. Domain and Hosting are covered for the first year; subsequent annual renewals will be the client's responsibility. Standard agreement includes two rounds of revisions during the testing phase.
+    <strong>Commercial notes.</strong>
+    <br><strong>VAT:</strong> All figures above are exclusive of VAT. If a formal VAT invoice is required for corporate tax purposes, 15% VAT will be added to the professional services subtotal (50,832.00 ETB), bringing the total to 432,712.00 ETB.
+    <br><strong>Annual renewals:</strong> Domain and hosting are covered for the first year only. From Year 2 these renew at approximately <strong>43,000 ETB per year</strong>, payable by Raise directly or through me, and subject to provider pricing at the time.
+    <br><strong>Revisions:</strong> Two consolidated rounds are included during Phase 3. Additional rounds, or changes to scope agreed after Phase 1 sign-off, are quoted separately before any work begins.
+    <br><strong>Ownership:</strong> On receipt of the final payment, full ownership of the website and the refreshed brand assets transfers to Raise Manufacturing &amp; Trading PLC.
   </div>
 
-  <h2>6. Post-Launch Technical Support</h2>
+  <h2>7. Post-Launch Support</h2>
   <div class="warranty-box">
-    <strong style="display: block !important; margin-bottom: 8px !important; font-size: 1.1rem !important;">30-Day Complimentary Technical Warranty</strong>
-    <span style="display: block !important; line-height: 1.6 !important;">To ensure a seamless handover and operational stability, this proposal includes <strong>30 days of free technical support</strong> immediately following the live launch. This covers any bug fixes, performance monitoring, form testing (including the quote portal), and minor platform adjustments. Any major structural additions or new features requested after launch will be scoped and billed separately.</span>
+    <strong style="display: block !important; margin-bottom: 8px !important; font-size: 1.1rem !important;">30-Day Technical Warranty — Included</strong>
+    <span style="display: block !important; line-height: 1.6 !important;">For 30 days after launch, technical support is included at no additional cost. This covers bug fixes, performance monitoring, form and quote portal testing, and minor adjustments. New features or structural additions requested after launch are scoped and quoted separately.</span>
+    <span style="display: block !important; line-height: 1.6 !important; margin-top: 14px !important;">Beyond the warranty period, the Framer CMS lets your team add new projects and update service copy without any developer involvement. A walkthrough of how to do this is included in the Phase 4 handover. Ongoing retained support can be arranged separately if you would prefer it handled for you.</span>
   </div>
 
-  <h2>7. Next Steps</h2>
-  <p>To proceed, please review this structure. Upon approval, I will provide a formal contract and request an initial deposit to secure a spot in the design sprint schedule and begin Phase 1.</p>
+  <h2>8. Next Steps</h2>
+  <p>To proceed:</p>
+  <ul>
+    <li><strong>Confirm acceptance</strong> by returning a signed copy of this proposal, or by written confirmation via email.</li>
+    <li><strong>I issue a formal contract and deposit invoice</strong> within one working day.</li>
+    <li><strong>On receipt of the deposit</strong>, your slot in the sprint schedule is secured and we book the Week 1 discovery session.</li>
+  </ul>
+  <p>If any part of the scope, timeline, or commercial terms needs adjusting, tell me before signing and I will reissue rather than resolve it mid-project.</p>
+
+  <div class="sign-grid">
+    <div>
+      <div class="sign-line"></div>
+      <span class="sign-caption">Signed for Raise Manufacturing &amp; Trading PLC</span>
+      <div class="sign-line" style="margin-top: 24px !important;"></div>
+      <span class="sign-caption">Name, title &amp; date</span>
+    </div>
+    <div>
+      <div class="sign-line"></div>
+      <span class="sign-caption">Shalom Eshetu</span>
+      <div class="sign-line" style="margin-top: 24px !important;"></div>
+      <span class="sign-caption">Date</span>
+    </div>
+  </div>
 
   <div class="footer">
     <div style="display: flex; flex-direction: column; gap: 4px;">
       <span style="font-weight: 800; color: var(--text-main); font-size: 1.2rem;">Shalom Eshetu</span>
-      <span style="color: var(--text-muted); font-size: 1rem; font-weight: 600;">Brand Identity Designer</span>
+      <span style="color: var(--text-muted); font-size: 1rem; font-weight: 600;">Brand Identity Designer &nbsp;·&nbsp; Addis Ababa</span>
+      <span style="font-size: 0.95rem; margin-top: 6px;">
+        <a class="contact-link" href="mailto:shalomeshetu@gmail.com">shalomeshetu@gmail.com</a>
+      </span>
     </div>
     <a href="https://shalomeshetu.com" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 8px; color: var(--text-main); text-decoration: none; font-weight: 700; background-color: white; padding: 12px 24px; border-radius: var(--radius-pill); border: 2px solid var(--border-color); font-size: 1rem; transition: all 0.2s;">
-      View Portfolio 
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+      View Portfolio
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
     </a>
   </div>
 
 </div>
 
-<div id="prototype-overlay">
-  <button id="close-prototype-btn" title="Close Prototype">×</button>
-  
+<div id="prototype-overlay" role="dialog" aria-modal="true" aria-label="Raise Manufacturing website prototype" aria-hidden="true">
+  <button id="close-prototype-btn" type="button" title="Close prototype (Esc)" aria-label="Close prototype">&times;</button>
+
+  <div id="proto-cdn-warning">
+    <strong>The prototype could not load its styling.</strong> This preview needs an internet connection. Please reconnect and reopen, or ask me to send a hosted link.
+  </div>
+
   <div class="proto-body antialiased min-h-screen pb-0 flex flex-col">
+
+    <div id="proto-banner">
+      <strong>CONCEPT PROTOTYPE</strong> &nbsp;·&nbsp; Directional only. Imagery is placeholder and all figures, client names and service copy are indicative — drawn from the 2024 profile and to be replaced with your current information in Phase 2.
+    </div>
+
     <!-- Prototype Nav -->
     <nav class="proto-nav-glass text-white sticky top-0 z-50 border-b border-gray-800">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex items-center justify-between h-20">
-          <div class="flex-shrink-0 flex items-center gap-2 cursor-pointer" onclick="showProtoTab('proto-home')">
+          <button type="button" class="flex-shrink-0 flex items-center gap-2 cursor-pointer text-left" onclick="showProtoTab('proto-home', this)">
             <div class="w-10 h-10 bg-white proto-text-dark font-bold text-xl flex items-center justify-center rounded-lg">R</div>
-            <span class="font-bold text-xl tracking-tight">RAISE <span class="text-gray-400 text-sm font-normal block -mt-1">Manufacturing & Trading</span></span>
-          </div>
-          
+            <span class="font-bold text-xl tracking-tight text-white">RAISE <span class="text-gray-400 text-sm font-normal block -mt-1">Manufacturing &amp; Trading</span></span>
+          </button>
+
           <!-- Desktop Nav -->
           <div class="hidden md:block">
             <div class="ml-10 flex items-baseline space-x-8">
-              <a href="#" class="proto-nav-link proto-text-neon font-bold hover:text-[#14f85e] px-3 py-2 rounded-md text-sm transition-colors" onclick="showProtoTab('proto-home')">Home</a>
-              <a href="#" class="proto-nav-link text-white hover:text-[#14f85e] px-3 py-2 rounded-md text-sm font-medium transition-colors" onclick="showProtoTab('proto-projects')">Projects</a>
-              <a href="#" class="proto-nav-link text-white hover:text-[#14f85e] px-3 py-2 rounded-md text-sm font-medium transition-colors" onclick="showProtoTab('proto-services')">Services</a>
-              <a href="#" class="proto-nav-link text-white hover:text-[#14f85e] px-3 py-2 rounded-md text-sm font-medium transition-colors" onclick="showProtoTab('proto-about')">About Us</a>
+              <button type="button" class="proto-nav-link proto-text-neon font-bold px-3 py-2 rounded-md text-sm transition-colors" onclick="showProtoTab('proto-home', this)">Home</button>
+              <button type="button" class="proto-nav-link text-white hover:text-[#14f85e] px-3 py-2 rounded-md text-sm font-medium transition-colors" onclick="showProtoTab('proto-projects', this)">Projects</button>
+              <button type="button" class="proto-nav-link text-white hover:text-[#14f85e] px-3 py-2 rounded-md text-sm font-medium transition-colors" onclick="showProtoTab('proto-services', this)">Services</button>
+              <button type="button" class="proto-nav-link text-white hover:text-[#14f85e] px-3 py-2 rounded-md text-sm font-medium transition-colors" onclick="showProtoTab('proto-about', this)">About Us</button>
             </div>
           </div>
-          
+
           <div class="hidden md:block">
-            <button class="proto-bg-neon proto-text-dark font-bold py-2 px-6 rounded-full hover:bg-white transition-colors text-sm shadow-[0_0_15px_rgba(20,248,94,0.3)]" onclick="showProtoTab('proto-quote')">
+            <button type="button" class="proto-bg-neon proto-text-dark font-bold py-2 px-6 rounded-full hover:bg-white transition-colors text-sm shadow-[0_0_15px_rgba(20,248,94,0.3)]" onclick="showProtoTab('proto-quote')">
               Request Quote
             </button>
           </div>
 
           <!-- Mobile menu button -->
           <div class="md:hidden flex items-center">
-            <button onclick="document.getElementById('proto-mobile-menu').classList.toggle('hidden')" class="text-gray-300 hover:text-white focus:outline-none">
-              <svg class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+            <button type="button" aria-label="Toggle menu" onclick="document.getElementById('proto-mobile-menu').classList.toggle('hidden')" class="text-gray-300 hover:text-white focus:outline-none">
+              <svg class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
             </button>
           </div>
         </div>
@@ -662,11 +1072,11 @@
       <!-- Mobile Menu -->
       <div id="proto-mobile-menu" class="hidden md:hidden proto-bg-dark border-t border-gray-800">
         <div class="px-2 pt-2 pb-4 space-y-1 sm:px-3">
-          <a href="#" class="proto-nav-link block proto-text-neon font-bold px-3 py-2 rounded-md text-base" onclick="showProtoTab('proto-home')">Home</a>
-          <a href="#" class="proto-nav-link block text-white hover:text-[#14f85e] px-3 py-2 rounded-md text-base font-medium" onclick="showProtoTab('proto-projects')">Projects</a>
-          <a href="#" class="proto-nav-link block text-white hover:text-[#14f85e] px-3 py-2 rounded-md text-base font-medium" onclick="showProtoTab('proto-services')">Services</a>
-          <a href="#" class="proto-nav-link block text-white hover:text-[#14f85e] px-3 py-2 rounded-md text-base font-medium" onclick="showProtoTab('proto-about')">About Us</a>
-          <button class="w-full mt-4 proto-bg-neon proto-text-dark font-bold py-3 px-6 rounded-lg hover:bg-white transition-colors text-sm" onclick="showProtoTab('proto-quote')">
+          <button type="button" class="proto-nav-link block w-full text-left proto-text-neon font-bold px-3 py-2 rounded-md text-base" onclick="showProtoTab('proto-home', this)">Home</button>
+          <button type="button" class="proto-nav-link block w-full text-left text-white hover:text-[#14f85e] px-3 py-2 rounded-md text-base font-medium" onclick="showProtoTab('proto-projects', this)">Projects</button>
+          <button type="button" class="proto-nav-link block w-full text-left text-white hover:text-[#14f85e] px-3 py-2 rounded-md text-base font-medium" onclick="showProtoTab('proto-services', this)">Services</button>
+          <button type="button" class="proto-nav-link block w-full text-left text-white hover:text-[#14f85e] px-3 py-2 rounded-md text-base font-medium" onclick="showProtoTab('proto-about', this)">About Us</button>
+          <button type="button" class="w-full mt-4 proto-bg-neon proto-text-dark font-bold py-3 px-6 rounded-lg hover:bg-white transition-colors text-sm" onclick="showProtoTab('proto-quote')">
             Request Quote
           </button>
         </div>
@@ -675,37 +1085,37 @@
 
     <!-- Main Content Area -->
     <main class="flex-grow">
-      
+
       <div id="proto-home" class="proto-tab proto-fade-in-up">
         <!-- Hero Section -->
         <div class="proto-bg-dark text-white pt-24 pb-32 px-4 relative overflow-hidden">
           <div class="absolute inset-0 opacity-10" style="background-image: linear-gradient(#14f85e 1px, transparent 1px), linear-gradient(90deg, #14f85e 1px, transparent 1px); background-size: 40px 40px;"></div>
           <div class="max-w-7xl mx-auto relative z-10 text-center">
-            <span class="inline-block py-1 px-3 rounded-full bg-gray-800 border border-gray-700 proto-text-neon text-sm font-semibold mb-6">10 Years of Engineering Excellence</span>
+            <span class="inline-block py-1 px-3 rounded-full bg-gray-800 border border-gray-700 proto-text-neon text-sm font-semibold mb-6">Engineering Excellence Since 2017</span>
             <h1 class="text-4xl md:text-6xl font-bold tracking-tight mb-6 leading-tight">
-              Industrial HVAC & <br> <span class="proto-text-neon">Electromechanical Solutions</span>
+              Industrial HVAC &amp; <br> <span class="proto-text-neon">Electromechanical Solutions</span>
             </h1>
             <p class="mt-4 max-w-2xl text-lg text-gray-300 mx-auto mb-10">
               Precision engineering, manufacturing, and installation for Ethiopia's leading corporate and commercial sectors.
             </p>
             <div class="flex flex-col sm:flex-row justify-center gap-4">
-              <button class="proto-bg-neon proto-text-dark font-bold py-4 px-8 rounded-full hover:bg-white transition-colors shadow-lg" onclick="showProtoTab('proto-projects')">
+              <button type="button" class="proto-bg-neon proto-text-dark font-bold py-4 px-8 rounded-full hover:bg-white transition-colors shadow-lg" onclick="showProtoTab('proto-projects')">
                 View Flagship Projects
               </button>
-              <button class="bg-transparent border border-white text-white font-bold py-4 px-8 rounded-full hover:bg-white hover:text-black transition-colors" onclick="showProtoTab('proto-services')">
+              <button type="button" class="bg-transparent border border-white text-white font-bold py-4 px-8 rounded-full hover:bg-white hover:text-black transition-colors" onclick="showProtoTab('proto-services')">
                 Our Capabilities
               </button>
             </div>
           </div>
         </div>
-        
+
         <!-- Stats -->
         <div class="bg-white border-b border-gray-200">
           <div class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-              <div><div class="text-4xl font-bold text-black">10+</div><div class="text-xs text-gray-500 mt-1 uppercase tracking-wider">Years Experience</div></div>
+              <div><div class="text-4xl font-bold text-black">9+</div><div class="text-xs text-gray-500 mt-1 uppercase tracking-wider">Years Experience</div></div>
               <div><div class="text-4xl font-bold text-black">50+</div><div class="text-xs text-gray-500 mt-1 uppercase tracking-wider">Major Projects</div></div>
-              <div><div class="text-4xl font-bold text-black">ISO</div><div class="text-xs text-gray-500 mt-1 uppercase tracking-wider">Certified Quality</div></div>
+              <div><div class="text-4xl font-bold text-black">6</div><div class="text-xs text-gray-500 mt-1 uppercase tracking-wider">Service Divisions</div></div>
               <div><div class="text-4xl font-bold text-black">24/7</div><div class="text-xs text-gray-500 mt-1 uppercase tracking-wider">Maintenance</div></div>
             </div>
           </div>
@@ -715,12 +1125,13 @@
         <div class="py-16 bg-gray-50">
           <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <p class="text-sm font-bold text-gray-400 uppercase tracking-widest mb-8">Trusted by Ethiopia's Leading Enterprises</p>
-            <div class="flex flex-wrap justify-center gap-10 md:gap-16 items-center opacity-70 grayscale hover:grayscale-0 transition-all duration-500">
-              <h4 class="text-2xl font-bold text-gray-800">Zemen Bank</h4>
-              <h4 class="text-2xl font-bold text-gray-800">Dire Intl Hotel</h4>
-              <h4 class="text-2xl font-bold text-gray-800">Naflet Hotel</h4>
-              <h4 class="text-2xl font-bold text-gray-800">Hillside Hotel</h4>
-              <h4 class="text-2xl font-bold text-gray-800">Kingdome Linen</h4>
+            <div class="flex flex-wrap justify-center gap-8 md:gap-14 items-center opacity-70 grayscale hover:grayscale-0 transition-all duration-500">
+              <h4 class="text-xl md:text-2xl font-bold text-gray-800">Zemen Bank</h4>
+              <h4 class="text-xl md:text-2xl font-bold text-gray-800">Dire Intl Hotel</h4>
+              <h4 class="text-xl md:text-2xl font-bold text-gray-800">Hillside Hotel</h4>
+              <h4 class="text-xl md:text-2xl font-bold text-gray-800">Kingdome Linen</h4>
+              <h4 class="text-xl md:text-2xl font-bold text-gray-800">Jigjiga Referral Hospital</h4>
+              <h4 class="text-xl md:text-2xl font-bold text-gray-800">Bilkhayer Construction</h4>
             </div>
           </div>
         </div>
@@ -729,8 +1140,8 @@
         <div class="py-20 proto-bg-dark text-white relative overflow-hidden">
           <div class="absolute -left-20 top-0 w-64 h-64 proto-bg-neon rounded-full opacity-5 blur-3xl"></div>
           <div class="max-w-4xl mx-auto px-4 text-center relative z-10">
-            <svg class="w-12 h-12 mx-auto proto-text-neon mb-6 opacity-80" fill="currentColor" viewBox="0 0 24 24"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg>
-            <p class="text-2xl md:text-3xl font-light leading-relaxed mb-8">"Raise Manufacturing and Trading PLC has consistently demonstrated excellence by deploying a team of skilled professionals... their dedication is evident in ensuring the successful completion of all assigned duties."</p>
+            <svg class="w-12 h-12 mx-auto proto-text-neon mb-6 opacity-80" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg>
+            <blockquote class="text-2xl md:text-3xl font-light leading-relaxed mb-8">"Raise Manufacturing and Trading PLC has consistently demonstrated excellence by deploying a team of skilled professionals... their dedication is evident in ensuring the successful completion of all assigned duties."</blockquote>
             <div class="inline-block bg-white/10 px-6 py-2 rounded-full backdrop-blur-sm border border-white/20">
               <p class="font-bold proto-text-neon">Hillside Hotel</p>
               <p class="text-sm text-gray-400">Official Letter of Recommendation</p>
@@ -742,17 +1153,17 @@
       <div id="proto-projects" class="proto-tab hidden max-w-7xl mx-auto px-4 py-16 sm:px-6 lg:px-8">
         <div class="mb-12">
           <h2 class="text-3xl font-bold text-black mb-4">Featured Projects</h2>
-          <p class="text-gray-600 max-w-3xl text-lg">A showcase of our recent high-stakes installations, demonstrating our capacity to handle complex, large-scale industrial cooling and ventilation requirements.</p>
+          <p class="text-gray-600 max-w-3xl text-lg">A showcase of recent high-stakes installations, demonstrating capacity to handle complex, large-scale industrial cooling and ventilation requirements.</p>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-200 hover:shadow-xl transition-shadow group">
-            <div class="h-64 bg-gray-200 relative">
-              <img src="https://placehold.co/800x600/1a1a1a/14f85e?text=Zemen+Bank+Chillers" alt="Zemen Bank Project" class="w-full h-full object-cover">
+            <div class="h-64 relative proto-ph">
+              <span>Zemen Bank — Modular Chillers<small>Your photography goes here</small></span>
               <div class="absolute top-4 right-4 bg-white px-3 py-1 rounded-full text-xs font-bold proto-text-dark shadow">Corporate Banking</div>
             </div>
             <div class="p-8">
               <h3 class="text-2xl font-bold text-black mb-2">Zemen Bank Headquarters</h3>
-              <p class="text-gray-600 mb-4">Complete installation of CWYC Modular Chillers and cladding works. Handled precise integration for high-uptime financial environment.</p>
+              <p class="text-gray-600 mb-4">Installation of CWYC modular chillers and cladding works, delivered in collaboration with Wuyi Co. Ltd. Precise integration for a high-uptime financial environment.</p>
               <div class="flex flex-wrap gap-2">
                 <span class="bg-gray-100 text-gray-600 text-xs px-2 py-1 rounded">Modular Chillers</span>
                 <span class="bg-gray-100 text-gray-600 text-xs px-2 py-1 rounded">Cladding</span>
@@ -760,13 +1171,13 @@
             </div>
           </div>
           <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-200 hover:shadow-xl transition-shadow group">
-            <div class="h-64 bg-gray-200 relative">
-              <img src="https://placehold.co/800x600/1a1a1a/14f85e?text=Dire+Intl+Hotel+VRF" alt="Dire Hotel Project" class="w-full h-full object-cover">
+            <div class="h-64 relative proto-ph">
+              <span>Dire International Hotel — VRF<small>Your photography goes here</small></span>
               <div class="absolute top-4 right-4 bg-white px-3 py-1 rounded-full text-xs font-bold proto-text-dark shadow">Hospitality</div>
             </div>
             <div class="p-8">
               <h3 class="text-2xl font-bold text-black mb-2">Dire International Hotel</h3>
-              <p class="text-gray-600 mb-4">Configuration, testing, and full installation of Daikin VRF systems, alongside meticulous indoor unit and duct fitting for optimal guest comfort.</p>
+              <p class="text-gray-600 mb-4">Configuration, testing, and full installation of Daikin VRF systems, alongside indoor unit and duct fitting for optimal guest comfort.</p>
               <div class="flex flex-wrap gap-2">
                 <span class="bg-gray-100 text-gray-600 text-xs px-2 py-1 rounded">Daikin VRF</span>
                 <span class="bg-gray-100 text-gray-600 text-xs px-2 py-1 rounded">Duct Fitting</span>
@@ -778,30 +1189,30 @@
 
       <div id="proto-services" class="proto-tab hidden max-w-7xl mx-auto px-4 py-16 sm:px-6 lg:px-8">
         <div class="mb-12 text-center">
-          <h2 class="text-3xl font-bold text-black mb-4">Capabilities & Manufacturing</h2>
-          <p class="text-gray-600 max-w-2xl mx-auto text-lg">From initial system design to custom part manufacturing and final installation, we provide end-to-end electro-mechanical solutions.</p>
+          <h2 class="text-3xl font-bold text-black mb-4">Capabilities &amp; Manufacturing</h2>
+          <p class="text-gray-600 max-w-2xl mx-auto text-lg">From system design to custom part manufacturing and final installation, we provide end-to-end electromechanical solutions.</p>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div class="bg-white p-8 rounded-2xl border-2 border-transparent hover:border-[#14f85e] transition-colors shadow-sm">
             <div class="w-12 h-12 proto-bg-dark rounded-xl flex items-center justify-center mb-6">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#14f85e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"></path><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"></path></svg>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#14f85e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"></path><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"></path></svg>
             </div>
             <h3 class="text-xl font-bold text-black mb-3">VRF/VRV Installation</h3>
-            <p class="text-gray-600 text-sm">Expertly designed systems for maximum energy efficiency and precise temperature control. Seamless integration prioritizing both comfort and sustainability.</p>
+            <p class="text-gray-600 text-sm">Systems designed for maximum energy efficiency and precise temperature control, integrated to prioritise both comfort and running cost.</p>
           </div>
           <div class="bg-white p-8 rounded-2xl border-2 border-transparent hover:border-[#14f85e] transition-colors shadow-sm">
             <div class="w-12 h-12 proto-bg-dark rounded-xl flex items-center justify-center mb-6">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#14f85e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#14f85e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg>
             </div>
             <h3 class="text-xl font-bold text-black mb-3">Ventilation Duct Works</h3>
-            <p class="text-gray-600 text-sm">Precise fabrication and seamless installation of custom ductwork. Optimized airflow for efficient climate control in commercial environments.</p>
+            <p class="text-gray-600 text-sm">In-house fabrication and installation of custom ductwork, optimised for airflow and efficient climate control in commercial environments.</p>
           </div>
           <div class="bg-white p-8 rounded-2xl border-2 border-transparent hover:border-[#14f85e] transition-colors shadow-sm">
             <div class="w-12 h-12 proto-bg-dark rounded-xl flex items-center justify-center mb-6">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#14f85e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect><rect x="9" y="9" width="6" height="6"></rect><line x1="9" y1="1" x2="9" y2="4"></line><line x1="15" y1="1" x2="15" y2="4"></line><line x1="9" y1="20" x2="9" y2="23"></line><line x1="15" y1="20" x2="15" y2="23"></line><line x1="20" y1="9" x2="23" y2="9"></line><line x1="20" y1="14" x2="23" y2="14"></line><line x1="1" y1="9" x2="4" y2="9"></line><line x1="1" y1="14" x2="4" y2="14"></line></svg>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#14f85e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect><rect x="9" y="9" width="6" height="6"></rect><line x1="9" y1="1" x2="9" y2="4"></line><line x1="15" y1="1" x2="15" y2="4"></line><line x1="9" y1="20" x2="9" y2="23"></line><line x1="15" y1="20" x2="15" y2="23"></line><line x1="20" y1="9" x2="23" y2="9"></line><line x1="20" y1="14" x2="23" y2="14"></line><line x1="1" y1="9" x2="4" y2="9"></line><line x1="1" y1="14" x2="4" y2="14"></line></svg>
             </div>
             <h3 class="text-xl font-bold text-black mb-3">Electrical Control Panels</h3>
-            <p class="text-gray-600 text-sm">Custom-built interfaces for monitoring and managing electrical devices. Centralized power distribution prioritizing safety and process efficiency.</p>
+            <p class="text-gray-600 text-sm">Custom-built panels for monitoring and managing electrical systems, with centralised power distribution built around safety and uptime.</p>
           </div>
         </div>
       </div>
@@ -809,12 +1220,14 @@
       <div id="proto-about" class="proto-tab hidden max-w-5xl mx-auto px-4 py-16 sm:px-6 lg:px-8">
         <div class="bg-white rounded-3xl p-8 md:p-12 shadow-sm border border-gray-200 flex flex-col md:flex-row gap-12 items-center">
           <div class="w-full md:w-1/2">
-            <img src="https://placehold.co/600x800/1a1a1a/14f85e?text=Workshop+Fabrication" alt="Workshop" class="rounded-2xl object-cover w-full h-[400px]">
+            <div class="proto-ph rounded-2xl w-full h-[400px]">
+              <span>Bole Brass Workshop<small>Your photography goes here</small></span>
+            </div>
           </div>
           <div class="w-full md:w-1/2">
-            <h2 class="text-3xl font-bold text-black mb-6">A Decade of Engineering</h2>
-            <p class="text-gray-600 mb-4">Founded on a strong foundation of mechanical and electrical engineering expertise, Raise Manufacturing has continuously evolved. Over the past decade, we have transitioned into a leading industrial equipment manufacturing company.</p>
-            <p class="text-gray-600 mb-6">Operating from our flagship workshop at A.A Bole Brass (K-Kare Bldg), we merge precision craftsmanship with advanced technologies like powder metallurgy to forge, press, and stamp top-tier metal components.</p>
+            <h2 class="text-3xl font-bold text-black mb-6">Engineering Since 2017</h2>
+            <p class="text-gray-600 mb-4">Built on a foundation of mechanical and electrical engineering expertise, Raise Manufacturing has continuously evolved — growing from installation and service into industrial equipment manufacturing.</p>
+            <p class="text-gray-600 mb-6">Operating from our workshop at A.A Bole Brass (K-Kare Bldg), we merge precision craftsmanship with technologies including powder metallurgy to forge, press, and stamp metal components.</p>
             <div class="border-l-4 proto-border-neon pl-4 py-2 bg-gray-50">
               <p class="font-semibold text-black text-sm">"We are committed to providing innovative and high-quality engineering services that exceed our clients' expectations in the Ethiopian industrial sector."</p>
             </div>
@@ -825,43 +1238,45 @@
       <div id="proto-quote" class="proto-tab hidden max-w-3xl mx-auto px-4 py-16 sm:px-6 lg:px-8">
         <div class="proto-bg-dark rounded-3xl p-8 md:p-12 shadow-2xl relative overflow-hidden text-white">
           <div class="absolute -right-20 -top-20 w-64 h-64 proto-bg-neon rounded-full opacity-10 blur-3xl"></div>
-          
+
           <h2 class="text-3xl font-bold mb-2 relative z-10">Request a Project Quote</h2>
-          <p class="text-gray-400 mb-8 relative z-10">Provide details about your upcoming project requirements, and our engineering team will provide a comprehensive breakdown.</p>
-          
-          <form class="relative z-10 space-y-6" onsubmit="event.preventDefault(); this.querySelector('button').innerText = 'Request Sent!';">
+          <p class="text-gray-400 mb-8 relative z-10">Provide details about your project requirements and our engineering team will respond with a comprehensive breakdown.</p>
+
+          <form class="relative z-10 space-y-6" onsubmit="return protoFakeSubmit(event);">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
-                <label class="block text-sm font-medium text-gray-300 mb-2">Company Name</label>
-                <input type="text" class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-[#14f85e]" placeholder="e.g. Zemen Bank">
+                <label for="pq-company" class="block text-sm font-medium text-gray-300 mb-2">Company Name</label>
+                <input id="pq-company" type="text" class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-[#14f85e]" placeholder="e.g. Zemen Bank">
               </div>
               <div>
-                <label class="block text-sm font-medium text-gray-300 mb-2">Contact Email</label>
-                <input type="email" class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-[#14f85e]" placeholder="name@company.com">
+                <label for="pq-email" class="block text-sm font-medium text-gray-300 mb-2">Contact Email</label>
+                <input id="pq-email" type="email" class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-[#14f85e]" placeholder="name@company.com">
               </div>
             </div>
             <div>
-              <label class="block text-sm font-medium text-gray-300 mb-2">Service Required</label>
-              <select class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-[#14f85e] appearance-none">
+              <label for="pq-service" class="block text-sm font-medium text-gray-300 mb-2">Service Required</label>
+              <select id="pq-service" class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-[#14f85e] appearance-none">
                 <option>VRF/VRV Installation</option>
                 <option>Modular Chillers Supply</option>
                 <option>Ventilation Duct Fabrication</option>
                 <option>Cold Room Construction</option>
                 <option>Electrical Control Panels</option>
+                <option>Kitchen &amp; Laundry Systems</option>
                 <option>General HVAC Maintenance</option>
               </select>
             </div>
             <div>
-              <label class="block text-sm font-medium text-gray-300 mb-2">Project Scale & Details</label>
-              <textarea rows="4" class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-[#14f85e] transition-colors resize-none" placeholder="Briefly describe the square footage, building type, and specific technical requirements..."></textarea>
+              <label for="pq-details" class="block text-sm font-medium text-gray-300 mb-2">Project Scale &amp; Details</label>
+              <textarea id="pq-details" rows="4" class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-[#14f85e] transition-colors resize-none" placeholder="Briefly describe the square footage, building type, and specific technical requirements..."></textarea>
             </div>
             <button type="submit" class="w-full proto-bg-neon proto-text-dark font-bold py-4 rounded-lg hover:bg-white transition-colors text-lg mt-4">
               Submit for Technical Review
             </button>
+            <p class="text-xs text-gray-500 text-center pt-2">Demonstration only — this prototype form does not send data.</p>
           </form>
         </div>
       </div>
-      
+
     </main>
 
     <footer class="bg-white border-t border-gray-200 mt-auto py-12">
@@ -871,68 +1286,121 @@
           <span class="font-bold proto-text-dark tracking-tight">RAISE</span>
         </div>
         <div class="text-sm text-gray-500 text-center md:text-left">
-          A.A Bole Brass, K-Kare Bldg <br>
-          raisemanufacturingtradingplc@gmail.com
+          A.A Bole Brass, K-Kare Bldg, Addis Ababa <br>
+          raisemanufacturingtradingplc@gmail.com &nbsp;·&nbsp; +251 93 821 2117
         </div>
         <div class="text-sm text-gray-400">
-          &copy; 2026 Raise Manufacturing & Trading.
+          &copy; 2026 Raise Manufacturing &amp; Trading.
         </div>
       </div>
     </footer>
-    
+
   </div>
 </div>
 
 <script>
-  // Logic for opening/closing the Prototype Modal
-  const openBtn = document.getElementById('open-prototype-btn');
-  const closeBtn = document.getElementById('close-prototype-btn');
-  const modal = document.getElementById('prototype-overlay');
-  
-  openBtn.addEventListener('click', () => {
-    modal.classList.add('active');
-    document.body.style.overflow = 'hidden'; // Prevent scrolling background
+(function () {
+  'use strict';
+
+  var openBtn  = document.getElementById('open-prototype-btn');
+  var closeBtn = document.getElementById('close-prototype-btn');
+  var modal    = document.getElementById('prototype-overlay');
+
+  function openModal() {
+    modal.classList.add('is-open');
+    modal.setAttribute('aria-hidden', 'false');
+    // Force a reflow so the opacity transition actually runs.
+    void modal.offsetWidth;
+    modal.classList.add('is-visible');
+    document.body.style.overflow = 'hidden';
+    closeBtn.focus();
+  }
+
+  function closeModal() {
+    modal.classList.remove('is-visible');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    window.setTimeout(function () {
+      modal.classList.remove('is-open');
+    }, 350);
+    openBtn.focus();
+  }
+
+  openBtn.addEventListener('click', openModal);
+  closeBtn.addEventListener('click', closeModal);
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && modal.classList.contains('is-open')) {
+      closeModal();
+    }
   });
 
-  closeBtn.addEventListener('click', () => {
-    modal.classList.remove('active');
-    document.body.style.overflow = ''; // Restore scrolling
+  // Keep focus inside the prototype while it is open.
+  modal.addEventListener('keydown', function (e) {
+    if (e.key !== 'Tab') return;
+    var focusables = modal.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+    var visible = [];
+    for (var i = 0; i < focusables.length; i++) {
+      if (focusables[i].offsetParent !== null) visible.push(focusables[i]);
+    }
+    if (!visible.length) return;
+    var first = visible[0];
+    var last  = visible[visible.length - 1];
+    if (e.shiftKey && document.activeElement === first) {
+      e.preventDefault();
+      last.focus();
+    } else if (!e.shiftKey && document.activeElement === last) {
+      e.preventDefault();
+      first.focus();
+    }
   });
 
-  // Logic for navigating inside the Prototype
-  function showProtoTab(tabId) {
-    // Hide all tabs
-    const tabs = document.querySelectorAll('.proto-tab');
-    tabs.forEach(tab => {
-      tab.classList.add('hidden');
-      tab.classList.remove('proto-fade-in-up');
-    });
-    
-    // Show active tab
-    const activeTab = document.getElementById(tabId);
-    activeTab.classList.remove('hidden');
-    void activeTab.offsetWidth; // Trigger reflow for animation
-    activeTab.classList.add('proto-fade-in-up');
-    
-    // Update nav colors
-    const navLinks = document.querySelectorAll('.proto-nav-link');
-    navLinks.forEach(link => {
-        link.classList.remove('proto-text-neon', 'font-bold');
-        link.classList.add('text-white');
-    });
-    
-    // Highlight clicked link (if triggered by a nav link)
-    if(event && event.currentTarget && event.currentTarget.classList.contains('proto-nav-link')) {
-       event.currentTarget.classList.remove('text-white');
-       event.currentTarget.classList.add('proto-text-neon', 'font-bold');
+  // Prototype tab navigation. The active element is passed in explicitly —
+  // relying on the implicit global `event` breaks outside Chrome.
+  window.showProtoTab = function (tabId, el) {
+    var tabs = document.querySelectorAll('.proto-tab');
+    for (var i = 0; i < tabs.length; i++) {
+      tabs[i].classList.add('hidden');
+      tabs[i].classList.remove('proto-fade-in-up');
     }
 
-    // Hide mobile menu if open
+    var activeTab = document.getElementById(tabId);
+    if (activeTab) {
+      activeTab.classList.remove('hidden');
+      void activeTab.offsetWidth;
+      activeTab.classList.add('proto-fade-in-up');
+    }
+
+    var navLinks = document.querySelectorAll('.proto-nav-link');
+    for (var j = 0; j < navLinks.length; j++) {
+      navLinks[j].classList.remove('proto-text-neon', 'font-bold');
+      navLinks[j].classList.add('text-white');
+    }
+
+    if (el && el.classList.contains('proto-nav-link')) {
+      el.classList.remove('text-white');
+      el.classList.add('proto-text-neon', 'font-bold');
+    }
+
     document.getElementById('proto-mobile-menu').classList.add('hidden');
-    
-    // Scroll to top of modal when changing tabs
     modal.scrollTo(0, 0);
-  }
+  };
+
+  window.protoFakeSubmit = function (e) {
+    e.preventDefault();
+    var btn = e.target.querySelector('button[type="submit"]');
+    btn.textContent = 'Request Sent ✓';
+    btn.disabled = true;
+    return false;
+  };
+
+  // If the Tailwind CDN is blocked or offline, say so instead of showing a broken page.
+  window.addEventListener('load', function () {
+    if (typeof window.tailwind === 'undefined') {
+      document.getElementById('proto-cdn-warning').style.display = 'block';
+    }
+  });
+})();
 </script>
 
 </body>
